@@ -36,3 +36,9 @@ RUN wget http://sourceforge.net/projects/plantuml/files/plantuml.jar/download -O
     texhash && \
     rm glossaries.tds.zip && \
     rm glossaries-extra.tds.zip
+
+RUN apt -y --quiet --no-install-recommends install \
+    locales \
+    locales-all
+
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
