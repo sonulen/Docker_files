@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 
 MAINTAINER Andrey Tolmachev <sonulen@gmail.com>
 
-# GCC 7.4.0
+# GCC G++ 9
 RUN apt-get update && apt-get install -y software-properties-common && \
     add-apt-repository ppa:ubuntu-toolchain-r/test && \
     apt update && apt install -y gcc-9 g++-9 && \
@@ -19,3 +19,6 @@ RUN git clone https://github.com/google/googletest.git && \
     cd googletest && mkdir mybuild && cd mybuild && \
     cmake ../ && \
     make && make install
+
+# Install doxygen for documentation
+RUN apt -y install doxygen
