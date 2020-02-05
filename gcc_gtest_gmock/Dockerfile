@@ -21,4 +21,4 @@ RUN git clone https://github.com/google/googletest.git && \
     make && make install
 
 # Install doxygen for documentation
-RUN apt -y install doxygen
+RUN apt -y install doxygen graphviz
