@@ -9,10 +9,12 @@ RUN apt-get update && apt-get install -y software-properties-common && \
     apt update && apt install -y gcc-9 g++-9 && \
     update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 \
     --slave /usr/bin/g++ g++ /usr/bin/g++-9 && \
-    update-alternatives --config gcc
+    update-alternatives --config gcc && \
+    apt -y autoremove && apt -y autoclean
 
 # Install git make cmake
-RUN apt-get install -y git cmake make
+RUN apt-get install -y git cmake make && \
+    apt -y autoremove && apt -y autoclean
 
 # Install g{test,mock} sources
 RUN git clone https://github.com/google/googletest.git && \
@@ -21,4 +23,5 @@ RUN git clone https://github.com/google/googletest.git && \
     make && make install
 
 # Install doxygen for documentation
-RUN apt -y install doxygen graphviz
+RUN apt -y install doxygen graphviz && \
+    apt -y autoremove && apt -y autoclean

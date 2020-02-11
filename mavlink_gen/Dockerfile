@@ -21,7 +21,8 @@ RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 
 RUN apt -y install  python3-dev \
     python3-pip \
-    python3-tk
+    python3-tk && \
+    apt -y autoremove && apt -y autoclean
 
 RUN pip3 install pymavlink
 
