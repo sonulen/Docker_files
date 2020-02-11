@@ -1,0 +1,29 @@
+name: Check's docker files
+
+on: [push]
+
+jobs:
+  build_mavlink_gen:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image for build Mavlink dialects
+      run: docker build . --file mavlink_gen/Dockerfile
+  build_gcc_gtest_gmock:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image for build run C/C++ projects with GTest + GMock
+      run: docker build . --file gcc_gtest_gmock/Dockerfile
+  build_arm_gcc_gtest_gmock:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image for build run C/C++ projects with GTest + GMock with arm compiler
+      run: docker build . --file arm_gcc_gtest_gmock/Dockerfile
+  build_texbuld:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image for build TeX documents
+      run: docker build . --file texbuild/Dockerfile
