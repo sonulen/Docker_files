@@ -48,3 +48,7 @@ RUN apt -y --quiet --no-install-recommends install \
     apt -y autoremove && apt -y autoclean
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+
+# Grep for pdf files
+RUN apt -y install pdfgrep && \
+    apt -y autoremove && apt -y autoclean
