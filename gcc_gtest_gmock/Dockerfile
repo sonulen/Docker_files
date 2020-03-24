@@ -25,3 +25,13 @@ RUN git clone https://github.com/google/googletest.git && \
 # Install doxygen for documentation
 RUN apt -y install doxygen graphviz && \
     apt -y autoremove && apt -y autoclean
+
+# Install cppcheck && cppcheck-htmlreport
+RUN git clone https://github.com/danmar/cppcheck.git && \
+    cd cppcheck && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    cmake --build . && make install && \
+    cd ../ && cp htmlreport/cppcheck-htmlreport /usr/bin/cppcheck-htmlreport && \
+    cd ../ && rm -rf cppcheck
