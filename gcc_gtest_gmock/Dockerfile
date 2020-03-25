@@ -34,4 +34,6 @@ RUN git clone https://github.com/danmar/cppcheck.git && \
     cmake .. && \
     cmake --build . && make install && \
     cd ../ && cp htmlreport/cppcheck-htmlreport /usr/bin/cppcheck-htmlreport && \
-    cd ../ && rm -rf cppcheck
+    cd ../ && rm -rf cppcheck && \ 
+    apt-get -y install python3-pygments && \
+    apt -y autoremove && apt -y autoclean
