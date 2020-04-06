@@ -37,3 +37,7 @@ RUN git clone https://github.com/danmar/cppcheck.git && \
     cd ../ && rm -rf cppcheck && \ 
     apt-get -y install python3-pygments && \
     apt -y autoremove && apt -y autoclean
+   
+# Update gcc version after all
+RUN update-alternatives --config gcc
+
