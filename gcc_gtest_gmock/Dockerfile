@@ -37,7 +37,13 @@ RUN git clone https://github.com/danmar/cppcheck.git && \
     cd ../ && rm -rf cppcheck && \ 
     apt-get -y install python3-pygments && \
     apt -y autoremove && apt -y autoclean
+    
+# Install clang formatter
+RUN apt-get install -y wget && \
+    bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" && \
+    apt-get install -y clang-format-10 && \
+    ln -s /usr/bin/clang-format-10 /usr/bin/clang-format && \
+    apt -y autoremove && apt -y autoclean
    
 # Update gcc version after all
 RUN update-alternatives --config gcc
-
